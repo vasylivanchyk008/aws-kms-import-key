@@ -1,8 +1,5 @@
 #!/bin/bash
 
-rm -rf *.bin
-rm -rf *.b64
-
 jq -r .PublicKey import.txt > PublicKey.b64
 jq -r .ImportToken import.txt > ImportToken.b64
 
