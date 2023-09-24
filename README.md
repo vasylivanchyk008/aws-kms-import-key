@@ -61,7 +61,7 @@ aws kms encrypt \
     --decode > ./work/ExampleEncryptedFile
 ```
 
-## Other processes
+## Key Management
 
 ### Rotating keys
 
