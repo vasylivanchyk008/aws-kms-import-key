@@ -3,31 +3,41 @@
 Create the key with `EXTERNAL` origin configuration:
 
 ```sh
-aws kms create-key --origin EXTERNAL
+aws kms create-key --origin EXTERNAL --description "External key"
+
+aws kms create-alias \
+    --alias-name alias/MyImportedKey \
+    --target-key-id 1234abcd-12ab-34cd-56ef-1234567890ab
 ```
 
-Downloa the wrapping public key:
+Create the `work` directory where artifacts will be created:
+
+```sh
+mkdir work
+```
+
+Download the wrapping public key:
 
 ```sh
 aws kms get-parameters-for-import \
     --key-id 1234abcd-12ab-34cd-56ef-1234567890ab \
     --wrapping-algorithm RSAES_OAEP_SHA_256 \
     --wrapping-key-spec RSA_3072 \
-    > import.txt
+    > ./work/import.txt
 ```
 
 Execute the script to prepare the key material:
 
 ```sh
-bash encrypt.sh
+bash wrapKey.sh
 ```
 
-Import the key material:
+Import the key material into KMS:
 
 ```sh
 aws kms import-key-material --key-id 1234abcd-12ab-34cd-56ef-1234567890ab \
-    --encrypted-key-material fileb://EncryptedKeyMaterial.bin \
-    --import-token fileb://ImportToken.bin \
+    --encrypted-key-material fileb://work/EncryptedKeyMaterial.bin \
+    --import-token fileb://work/ImportToken.bin \
     --expiration-model KEY_MATERIAL_DOES_NOT_EXPIRE
 ```
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ./work
+
 jq -r .PublicKey import.txt > PublicKey.b64
 jq -r .ImportToken import.txt > ImportToken.b64
 
