@@ -80,9 +80,9 @@ aws kms update-alias \
 You cannot immediately delete a KMS Key.
 
 Options are:
-- Disable
-- Delete the key material (imported keys only)
-- Schedule for deletion
+- Disable the key.
+- Delete the key material (imported keys only).
+- Schedule for deletion with the standard range of 7-30 days.
 
 When the key material is deleted, it is only possible to upload the same previous key material (view next section).
 
