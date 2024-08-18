@@ -31,6 +31,8 @@ aws kms get-parameters-for-import \
 Execute the script to prepare the key material:
 
 ```sh
+sudo chmod 700 wrapKey.sh 
+
 bash wrapKey.sh
 ```
 
