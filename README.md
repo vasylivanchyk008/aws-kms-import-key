@@ -73,8 +73,8 @@ aws kms import-key-material --key-id 1234abcd-12ab-34cd-56ef-1234567890ab \
 💡 To add expiration to the key, change the following:
 
 ```sh
---expiration-model KEY_MATERIAL_EXPIRES \
---valid-to 2023-06-17T12:00:00-08:00
+    --expiration-model KEY_MATERIAL_EXPIRES \
+    --valid-to 2023-06-17T12:00:00-08:00
 ```
 
 Test the key:
